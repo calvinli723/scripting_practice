@@ -16,20 +16,20 @@ then
 fi
 
 optstring=":ard"
-ARCHIVE=false
-USERDEL=false
-DELHOME=false
+ARCHIVE=0
+USERDEL=0
+DELHOME=0
 
 while getopts ${optstring} arg; do
   case ${arg} in
     a)
-      ARCHIVE=true
+      ARCHIVE=1
       ;;
     d)
-      USERDEL=true
+      USERDEL=1
       ;;
     r)
-      DELHOME=true
+      DELHOME=1
       ;;
     :)
       echo "$0: Must supply an argument to -$OPTARG." >&2
@@ -51,7 +51,7 @@ username=$1
 
 echo $username
 
-if [ $ARCHIVE ]; then
+if [ $ARCHIVE -eq 1 ]; then
     if [ ! -d "/archive" ]; then
         echo "Directory '/archive' not found; creating /archive"
 	mkdir /archive
@@ -59,12 +59,12 @@ if [ $ARCHIVE ]; then
     cp -r /home/$username /archive
 fi
 
-if [ $USERDEL ]; then
+if [ $USERDEL -eq 1 ]; then
     userdel $username
 else
     passwd $username -l
 fi
 
-if [ $DELHOME ]; then
+if [ $DELHOME -eq 1 ]; then
     rm -rf /home/$username
 fi
