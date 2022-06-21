@@ -16,17 +16,20 @@ then
 fi
 
 optstring=":ard"
+ARCHIVE=false
+USERDEL=false
+DELHOME=false
 
 while getopts ${optstring} arg; do
   case ${arg} in
     a)
-      echo "option a"
+      ARCHIVE=true
       ;;
     d)
-      echo "option d"
+      USERDEL=true
       ;;
     r)
-      echo "option r"
+      DELHOME=true
       ;;
     :)
       echo "$0: Must supply an argument to -$OPTARG." >&2
@@ -39,16 +42,29 @@ while getopts ${optstring} arg; do
   esac
 done
 
-if [ $(( $# - $OPTIND )) -lt 1 ]; then
+shift $((OPTIND-1))
+if [ $# -lt 1 ]; then
     usage
 fi
 
-username=$(@:$OPTIND:1)
+username=$1
 
 echo $username
 
-passwd $username -l
+if [ $ARCHIVE ]; then
+    if [ ! -d "/archive" ]; then
+        echo "Directory '/archive' not found; creating /archive"
+	mkdir /archive
+    fi
+    cp -r /home/$username /archive
+fi
 
+if [ $USERDEL ]; then
+    userdel $username
+else
+    passwd $username -l
+fi
 
-
-
+if [ $DELHOME ]; then
+    rm -rf /home/$username
+fi
