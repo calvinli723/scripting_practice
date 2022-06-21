@@ -63,7 +63,7 @@ if [ $USERDEL -eq 1 ]; then
     userdel $username
 else
     echo "Disabling user account: $username"
-    passwd $username -l
+    usermod --expiredate 1 $username
 fi
 
 if [ $DELHOME -eq 1 ]; then
