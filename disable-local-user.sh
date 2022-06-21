@@ -49,22 +49,24 @@ fi
 
 username=$1
 
-echo $username
-
 if [ $ARCHIVE -eq 1 ]; then
     if [ ! -d "/archive" ]; then
         echo "Directory '/archive' not found; creating /archive"
 	mkdir /archive
     fi
+    echo "Archiving contents of /home/$username to /archive"
     cp -r /home/$username /archive
 fi
 
 if [ $USERDEL -eq 1 ]; then
+    echo "Deleting user account: $username"
     userdel $username
 else
+    echo "Disabling user account: $username"
     passwd $username -l
 fi
 
 if [ $DELHOME -eq 1 ]; then
+    echo "Deleting home directory for user $username"
     rm -rf /home/$username
 fi
