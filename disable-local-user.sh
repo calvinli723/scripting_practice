@@ -1,11 +1,11 @@
 #!/bin/bash
 
 function usage {
-        echo "Usage: $(basename $0) [-adr] <username>" 2>&1
+    echo "Usage: $(basename $0) [-adr] <username>" 2>&1
 	echo '   -d   Deletes user account(s) instead of simply disabling'
 	echo '   -r   Removes the home directorys associated with the account(s)'
 	echo '   -a   Creates an archive of the home directory associated with each user account'
-        exit 1
+    exit 1
 }
 
 if [[ $UID != 0 ]]
