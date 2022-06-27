@@ -23,6 +23,8 @@ Contains example log files for use with scripts such as `show-attackers.sh`.
 
 `disable-local-user.sh`
 
+Please install `geoiplookup` command for your system first (`sudo apt install geoip-bin`) as well as update the geoip database (details here:https://www.maketecheasier.com/ip-address-geolocation-lookups-linux/)
+
 * Enforces that it be executed with superuser (root) privileges. If the script is not executed with superuser privileges it will not attempt to create a user and returns an exit status of 1. All messages associated with this event will be displayed on standard error.
 
 * Provides a usage statement much like you would find in a man page if the user does not supply an account name on the command line and returns an exit status of 1. All messages associated with this event will be displayed on standard error.
@@ -39,7 +41,7 @@ Contains example log files for use with scripts such as `show-attackers.sh`.
 
 * Any other option will cause the script to display a usage statement and exit with an exit status of 1.
 
-* **TODO**: Accepts a list of usernames as arguments. At least one username is required or the script will display a usage statement much like you would find in a man page and return an exit status of 1. All messages associated with this event will be displayed on standard error.
+* Accepts a list of usernames as arguments. At least one username is required or the script will display a usage statement much like you would find in a man page and return an exit status of 1. All messages associated with this event will be displayed on standard error.
 
 * **TODO**: Refuses to disable or delete any accounts that have a UID less than 1,000.
 
