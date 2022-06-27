@@ -18,14 +18,14 @@ fi
 # search log file for entries from "sshd" with "Failed password", get IP field, sort with counts
 cat $1 | grep "Failed password" | awk '{print $11}' | uniq -c | sort -nr > _ip_counts
 # get IP counts greater than 10
-awk '{ if($1 > 10) print $2}' _ip_counts
+awk '{ if($1 > 10) print $1" "$2}' _ip_counts > _suspect_ips
 rm _ip_counts
 
-#cat $1 | grep "Received disconnect" >  _sshd_failures
-#cat $1 | grep "Received disconnect" | awk '{print $9}' > _failed_ips
-
-#sort _failed_ips | uniq -c > _ip_counts
-#rm _failed_ips
-
-#awk '{ if($1 >= 10) print $2}' _ip_counts > _suspect_ips
-#rm _ip_counts
+# produce CSV output of Count,IP,Location
+while read line; do
+    curr_count=$(echo $line | awk '{print $1}')
+    curr_ip=$(echo $line | awk '{print $2}')
+    curr_country=$(geoiplookup $curr_ip)
+    echo $curr_count,$curr_ip,$curr_country
+done < _suspect_ips
+rm _suspect_ips
