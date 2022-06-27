@@ -1,5 +1,11 @@
 # scripting_practice
 
+## These scripts were written and tested for Ubuntu Linux 22.04 (Jammy Jellyfish)
+
+`example_logs`
+Contains example log files for use with scripts such as `show-attackers.sh`.
+
+
 `add-local-user.sh`
 
 
@@ -41,3 +47,14 @@
 * **TODO**: Informs the user if the account was not able to be disabled, deleted, or archived for some reason.
 
 * Displays the username and any actions performed against the account.
+
+
+`show-attackers.sh`
+
+- Use `example_logs/syslog` as example input; Designed to read from `/var/log/auth.log` (contains sshd logs).
+
+- Requires that a file is provided as an argument.  If a file is not provided or it cannot be read, then the script will display an error message and exit with a status of 1.
+
+- Counts the number of failed login attempts by IP address.  If there are any IP addresses with more than 10 failed login attempts, the number of attempts made, the IP address from which those attempts were made, and the location of the IP address will be displayed.
+
+- **TODO**: Produces output in CSV (comma-separated values) format with a header of "Count,IP,Location".
