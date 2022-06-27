@@ -39,7 +39,7 @@ Contains example log files for use with scripts such as `show-attackers.sh`.
 
 * Any other option will cause the script to display a usage statement and exit with an exit status of 1.
 
-* Accepts a list of usernames as arguments. At least one username is required or the script will display a usage statement much like you would find in a man page and return an exit status of 1. All messages associated with this event will be displayed on standard error.
+* **TODO**: Accepts a list of usernames as arguments. At least one username is required or the script will display a usage statement much like you would find in a man page and return an exit status of 1. All messages associated with this event will be displayed on standard error.
 
 * **TODO**: Refuses to disable or delete any accounts that have a UID less than 1,000.
 
