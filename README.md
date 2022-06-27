@@ -52,7 +52,7 @@ Contains example log files for use with scripts such as `show-attackers.sh`.
 
 `show-attackers.sh`
 
-Please install `geoiplookup` command for your system first (`sudo apt install geoip-bin`) as well as update the geoip database (details here:https://www.maketecheasier.com/ip-address-geolocation-lookups-linux/)
+Please install `geoiplookup` command for your system first (`sudo apt install geoip-bin` on Ubuntu 22.04) as well as update the geoip database (details here:https://www.maketecheasier.com/ip-address-geolocation-lookups-linux/)
 
 - Requires that a file is provided as an argument.  If a file is not provided or it cannot be read, then the script will display an error message and exit with a status of 1. Use `example_logs/syslog` as example input; designed to read from `/var/log/auth.log` (contains sshd logs).
 
