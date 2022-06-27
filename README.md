@@ -23,8 +23,6 @@ Contains example log files for use with scripts such as `show-attackers.sh`.
 
 `disable-local-user.sh`
 
-Please install `geoiplookup` command for your system first (`sudo apt install geoip-bin`) as well as update the geoip database (details here:https://www.maketecheasier.com/ip-address-geolocation-lookups-linux/)
-
 * Enforces that it be executed with superuser (root) privileges. If the script is not executed with superuser privileges it will not attempt to create a user and returns an exit status of 1. All messages associated with this event will be displayed on standard error.
 
 * Provides a usage statement much like you would find in a man page if the user does not supply an account name on the command line and returns an exit status of 1. All messages associated with this event will be displayed on standard error.
@@ -54,8 +52,10 @@ Please install `geoiplookup` command for your system first (`sudo apt install ge
 
 `show-attackers.sh`
 
+Please install `geoiplookup` command for your system first (`sudo apt install geoip-bin`) as well as update the geoip database (details here:https://www.maketecheasier.com/ip-address-geolocation-lookups-linux/)
+
 - Requires that a file is provided as an argument.  If a file is not provided or it cannot be read, then the script will display an error message and exit with a status of 1. Use `example_logs/syslog` as example input; designed to read from `/var/log/auth.log` (contains sshd logs).
 
 - Counts the number of failed login attempts by IP address.  If there are any IP addresses with more than 10 failed login attempts, the number of attempts made, the IP address from which those attempts were made, and the location of the IP address will be displayed.
 
-- **TODO**: Produces output in CSV (comma-separated values) format with a header of "Count,IP,Location".
+- Produces output in CSV (comma-separated values) format with a header of "Count,IP,Location".
