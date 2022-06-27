@@ -1,5 +1,6 @@
 # scripting_practice
 
+## This repository contains various Bash scripts to aid Linux system adminstrators in basic tasks
 ## These scripts were written and tested for Ubuntu Linux 22.04 (Jammy Jellyfish)
 
 `example_logs`
